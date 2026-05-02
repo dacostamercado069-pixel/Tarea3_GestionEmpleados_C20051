@@ -1,6 +1,6 @@
 # Gestión de Empleados
 
-Kristy Daniela Mercado C20051
+Kristy Daniela Acosta Mercado C20051
 
 ---
 
