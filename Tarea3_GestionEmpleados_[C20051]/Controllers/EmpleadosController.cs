@@ -29,6 +29,52 @@ namespace Tarea3_GestionEmpleados__C20051_.Controllers
 
             return View(empleados);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Empleado empleado)
+        {
+            if (ModelState.IsValid)
+            {
+                empleado.Activo = true;
+                _repo.Agregar(empleado);
+                return RedirectToAction("Index");
+            }
+
+            return View(empleado);
+        }
+
+       
+        public IActionResult Edit(int id)
+        {
+            var empleado = _repo.ObtenerPorId(id);
+
+            if (empleado == null)
+            {
+                return NotFound();
+            }
+
+            return View(empleado);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Empleado empleado)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.Actualizar(empleado);
+                return RedirectToAction("Index");
+            }
+
+            return View(empleado);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -44,5 +90,7 @@ namespace Tarea3_GestionEmpleados__C20051_.Controllers
 
             return RedirectToAction("Index");
         }
+
+      
     }
 }

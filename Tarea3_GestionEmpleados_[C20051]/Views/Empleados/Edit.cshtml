@@ -1,0 +1,18 @@
+﻿@model Empleado
+@using Tarea3_GestionEmpleados__C20051_.Models
+
+<h2>Editar Empleado</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <input class="form-control mb-2" asp-for="Nombre" />
+    <input class="form-control mb-2" asp-for="Apellido" />
+    <input class="form-control mb-2" asp-for="Departamento" />
+    <input class="form-control mb-2" asp-for="Salario" type="number" />
+    <input class="form-control mb-2" asp-for="FechaIngreso" type="date" />
+
+    <button class="btn btn-primary">Actualizar</button>
+</form>

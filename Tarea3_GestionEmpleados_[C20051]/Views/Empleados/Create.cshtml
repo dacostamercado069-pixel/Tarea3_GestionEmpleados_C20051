@@ -1,0 +1,16 @@
+﻿@model Empleado
+@using Tarea3_GestionEmpleados__C20051_.Models
+
+<h2>Crear Empleado</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <input class="form-control mb-2" asp-for="Nombre" placeholder="Nombre" />
+    <input class="form-control mb-2" asp-for="Apellido" placeholder="Apellidos" />
+    <input class="form-control mb-2" asp-for="Departamento" placeholder="Departamento" />
+    <input class="form-control mb-2" asp-for="Salario" type="number" placeholder="Salario" />
+    <input class="form-control mb-2" asp-for="FechaIngreso" type="date" />
+
+    <button class="btn btn-success">Guardar</button>
+</form>
