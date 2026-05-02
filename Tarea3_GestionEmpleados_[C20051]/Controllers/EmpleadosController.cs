@@ -15,6 +15,8 @@ namespace Tarea3_GestionEmpleados__C20051_.Controllers
 
         public IActionResult Index(string busqueda = "", int pagina = 1)
         {
+            busqueda = busqueda ?? "";
+
             int tamano = 5;
 
             var empleados = _repo.ObtenerPaginado(pagina, tamano, busqueda);
@@ -26,6 +28,21 @@ namespace Tarea3_GestionEmpleados__C20051_.Controllers
             ViewBag.Total = total;
 
             return View(empleados);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ToggleActivo(int id)
+        {
+            var empleado = _repo.ObtenerPorId(id);
+
+            if (empleado != null)
+            {
+                empleado.Activo = !empleado.Activo;
+                _repo.Actualizar(empleado);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
