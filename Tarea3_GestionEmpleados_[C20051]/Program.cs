@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Tarea3_GestionEmpleados__C20051_.Data;
+using Tarea3_GestionEmpleados__C20051_.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IEmpleadoRepo, EmpleadoRepo>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
